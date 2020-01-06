@@ -19,6 +19,6 @@ public class OneAway {
             return false;
         }
 
-        int minStrLeg
+        return true;
     }
 }

@@ -1,7 +1,6 @@
 package chapterone;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class CheckPermutations {
     public static void main(String[] args){
@@ -15,6 +14,12 @@ public class CheckPermutations {
         System.out.println(isPermutation(sTwo, sThree));
     }
 
+    /**
+     * Checks to see if one string is a permutation of antoher
+     * @param sOne, possible permutation
+     * @param sTwo, possible permutation
+     * @return boolean, true if permutationm, else false
+     */
     public static boolean isPermutation(String sOne, String sTwo){
         if (sOne.length() != sTwo.length()){
             return false;

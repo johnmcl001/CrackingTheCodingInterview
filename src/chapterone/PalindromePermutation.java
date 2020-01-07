@@ -32,6 +32,11 @@ public class PalindromePermutation {
         return oneOdd(charCount);
     }
 
+    /**
+     * Converts string to character array omitting non alphabet chars and making lower case
+     * @param str, input string
+     * @return char array without non-alphabet chars and all lower case
+     */
     public static char[] convertString(String str){
         StringBuilder sb = new StringBuilder();
         for (char c: str.toCharArray()){
@@ -42,6 +47,11 @@ public class PalindromePermutation {
         return sb.toString().toCharArray();
     }
 
+    /**
+     * Counts chars to ensure that no more than one char has an odd count
+     * @param charCount, array showing the frequency of each character
+     * @return boolean, true if one or less odd number of characters
+     */
     public static boolean oneOdd(ArrayList<Integer> charCount){
         int numberOdd = 0;
         for (Integer i: charCount){

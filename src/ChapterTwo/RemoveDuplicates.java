@@ -11,8 +11,7 @@ public class RemoveDuplicates {
         }
 
         System.out.println(t);
-        LinkedList<Integer> noDupes = removeDupes(t);
-        System.out.println(noDupes);
+        System.out.println(removeDupes(t));
     }
 
     public static LinkedList<Integer> removeDupes(LinkedList<Integer> ll){

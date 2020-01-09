@@ -125,7 +125,10 @@ public class LinkedList<E> {
         StringBuilder sb = new StringBuilder();
         Node<E> walker = head;
         while (walker != null){
-            sb.append(walker.getElement()).append(" ");
+            sb.append(walker.getElement());
+            if (walker.getNext() != null){
+                sb.append(" -> ");
+            }
             walker = walker.getNext();
         }
         return sb.toString();

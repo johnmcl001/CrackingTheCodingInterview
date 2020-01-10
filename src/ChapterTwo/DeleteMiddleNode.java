@@ -16,6 +16,12 @@ public class DeleteMiddleNode {
         System.out.println(t);
     }
 
+    /**
+     * Remove node from list so long as it's not head or tail
+     * @param ll, linked list which may contain c
+     * @param c, element to be removed from ll
+     * @param <E>, Type for c
+     */
     public static <E> void removeMiddle(LinkedList<E> ll, char c){
         if (ll.getHead().getElement().equals(c) || ll.getTail().getElement().equals(c)){
             return;

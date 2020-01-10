@@ -12,6 +12,12 @@ public class KToLast {
         System.out.println(kToLast(t, 15));
     }
 
+    /**
+     * Returns from k to end of linked list ll
+     * @param ll, Linked list
+     * @param k, position from which to return
+     * @return subset linked list of ll
+     */
     public static Integer kToLast(LinkedList<Integer> ll, int k){
         LinkedList<Integer> buffer = new LinkedList<>();
         Node<Integer> walker = ll.getHead();

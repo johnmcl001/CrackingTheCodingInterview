@@ -74,6 +74,15 @@ public class DoublyLinkedList <E> {
 
     }
 
+    // For Question Setup
+
+    public void intersect(DNode<E> n){
+        DNode<E> pred = getLast();
+        pred.setNext(n);
+        tail.setPrev(n);
+        size++;
+    }
+
     // Utilities
     private void insertBetween(E e, DNode<E> pred, DNode<E> succ){
         DNode<E> newNode = new DNode<>(e, pred, succ);

@@ -50,7 +50,7 @@ public class DoublyLinkedList <E> {
             return null;
         }
         DNode<E> oldHead = getFirst();
-        head.setNext(head.getNext());
+        head.setNext(oldHead.getNext());
         E ans = oldHead.getElement();
         oldHead.setPrev(null);
         oldHead.setNext(null);
@@ -64,7 +64,7 @@ public class DoublyLinkedList <E> {
             return null;
         }
         DNode<E> oldTail = getLast();
-        tail.setPrev(tail.getPrev());
+        tail.setPrev(oldTail.getPrev());
         E ans = oldTail.getElement();
         oldTail.setPrev(null);
         oldTail.setNext(null);

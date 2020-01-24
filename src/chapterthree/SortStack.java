@@ -31,19 +31,6 @@ public class SortStack {
     }
 
     private static void sortBetter(Stack<Integer> stack) {
-        Stack<Integer> tempStack = new Stack<>();
-        int temp;
-        while(!stack.isEmpty()){
-            temp = stack.pop();
-            while(!tempStack.isEmpty() && tempStack.top() > temp) {
-                stack.push(tempStack.pop());
-            }
-            tempStack.push(temp);
-        }
-
-        while (!tempStack.isEmpty()) {
-            stack.push(tempStack.pop());
-        }
     }
 
     private static void sort(Stack<Integer> stack) {

@@ -1,7 +1,5 @@
 package chapterthree;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 public class StackOfPlates<E> {
@@ -35,6 +33,8 @@ public class StackOfPlates<E> {
 
         System.out.println();
         System.out.println(stacks.currentStack);
+
+        System.out.println(stacks.popAt(10));
     }
 
     // Attributes
@@ -60,10 +60,21 @@ public class StackOfPlates<E> {
     }
 
     /**
+     * checks if the stack of stacks is empty
+     * @return true if empty else false
+     */
+    public boolean isEmpty(){
+        return stacks.isEmpty();
+    }
+
+    /**
      * returns top most element of topmost stack without removing it
      * @return E, topmost element of topmost stack
      */
     public E top(){
+        if (isEmpty()){
+            return null;
+        }
         return currentStack.top();
     }
 
@@ -87,6 +98,9 @@ public class StackOfPlates<E> {
      * @return E, topmost element of topmost stack
      */
     public E pop(){
+        if (isEmpty()){
+            return null;
+        }
         E ans = currentStack.pop();
         if (currentStack.getSize() == 0){
             stacks.remove(currentStack);
@@ -101,7 +115,13 @@ public class StackOfPlates<E> {
      * @param i, determines stack to pop from
      * @return E, topmost element of specified stack
      */
-    public E popAt(int i){
+    public E popAt(int i) throws IllegalArgumentException {
+        if (isEmpty()) {
+            return null;
+        }
+        if (i >= stacks.size() || i < 0) {
+            throw new IllegalArgumentException("Stack doesn't exist");
+        }
         Stack<E> stack = stacks.get(i);
 
         E ans = stack.pop();
@@ -111,6 +131,7 @@ public class StackOfPlates<E> {
             if (stack == currentStack) {
                 currentStack = stacks.lastElement();
             }
+
         }
 
         return ans;

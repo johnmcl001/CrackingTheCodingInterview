@@ -1,8 +1,5 @@
 package chapterthree;
 
-import ChapterTwo.DNode;
-import ChapterTwo.DoublyLinkedList;
-
 import java.util.Arrays;
 
 public class StackMin {
@@ -13,33 +10,29 @@ public class StackMin {
             arr[i] = (int) (1 + Math.random()*20);
         }
 
-        System.out.println(Arrays.toString(arr));
-
         StackMin stackMin = new StackMin();
 
         for (int i: arr){
             stackMin.push(i);
         }
 
-        System.out.println(stackMin.min());
-
         while (!stackMin.isEmpty()){
-            System.out.println(stackMin.min());
-            System.out.println(stackMin.pop());
+            System.out.println(stackMin);
+            System.out.println("min: " + stackMin.min());
+            System.out.println("removed: " + stackMin.pop());
             System.out.println();
         }
     }
     // Attributes
 
     // Adapt doubly linked list to store ints
-    DoublyLinkedList<Integer> list;
-    int min;
+    private StackNode top;
+    int size = 0;
 
     // Constructors
 
     public StackMin() {
-        list = new DoublyLinkedList<>();
-        min = Integer.MAX_VALUE;
+        top = null;
     }
 
     // Getters
@@ -49,7 +42,7 @@ public class StackMin {
      * @return int, smallest element of the stack;
      */
     public int min() {
-        return min;
+        return top.getMin();
     }
 
     /**
@@ -58,7 +51,7 @@ public class StackMin {
      * @return int, number of elements in the stack
      */
     public int getSize() {
-        return list.getSize();
+        return size;
     }
 
     /**
@@ -67,7 +60,7 @@ public class StackMin {
      * @return boolean, true if empty else false
      */
     public boolean isEmpty() {
-        return list.isEmpty();
+        return size == 0;
     }
 
     /**
@@ -76,7 +69,11 @@ public class StackMin {
      * @return int, top most element of the stack
      */
     public int top() {
-        return list.getFirst().getElement();
+        if (isEmpty()){
+            return -1;
+        }
+
+        return top.getElement();
     }
 
     // Setters
@@ -87,10 +84,16 @@ public class StackMin {
      * @param i, new element to be inserted
      */
     public void push(int i) {
-        if (i < min){
-            min = i;
+        StackNode newNode;
+        if (isEmpty()){
+            newNode = new StackNode(i, top, i);
+        } else if (i < top.getMin()) {
+            newNode = new StackNode(i, top, i);
+        } else {
+            newNode = new StackNode(i, top, top.getMin());
         }
-        list.insertFirst(i);
+        top = newNode;
+        size++;
     }
 
     /**
@@ -98,24 +101,62 @@ public class StackMin {
      * @return int, top most element of the stack
      */
     public int pop(){
-        if (top() == min){
-            min = findNewMin();
+        if (isEmpty()){
+            return -1;
         }
-        return list.removeFirst();
+        int ans = top.getElement();
+        top = top.getNext();
+        size--;
+        return ans;
     }
 
     // Utilities
 
-    private int findNewMin(){
-        DNode<Integer> walker = list.getFirst();
-        int minSearch = Integer.MAX_VALUE;
-        while (walker.getNext().getElement() != null){
-            if (walker.getElement() < minSearch){
-                minSearch = walker.getElement();
-            }
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        StackNode walker = top;
+        while (walker != null) {
+            sb.append(walker.getElement());
+            sb.append(" ");
             walker = walker.getNext();
         }
-        return minSearch;
+
+        return sb.toString();
+    }
+
+    // Nested Class
+
+    private class StackNode {
+        private int element;
+        private StackNode next;
+        private final int min;
+
+        public StackNode(int e, StackNode n, int m){
+            element = e;
+            next = n;
+            min = m;
+        }
+
+        public int getElement(){
+            return element;
+        }
+
+        public StackNode getNext() {
+            return next;
+        }
+
+        public int getMin(){
+            return min;
+        }
+
+        public void setElement(int e){
+            element = e;
+        }
+
+        public void setNext(StackNode n){
+            next = n;
+        }
     }
 }
 

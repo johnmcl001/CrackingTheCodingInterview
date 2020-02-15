@@ -1,4 +1,4 @@
-package ChapterTwo;
+package chaptertwo;
 
 public class DoublyLinkedList <E> {
     private DNode<E> head;
@@ -105,5 +105,21 @@ public class DoublyLinkedList <E> {
         }
 
         return sb.toString();
+    }
+
+    public boolean contains(E e) {
+        if (isEmpty()) {
+            return false;
+        }
+        DNode<E> walker = getFirst();
+
+        while(walker.getNext() != null){
+            if (e == walker.getElement()){
+                return true;
+            }
+            walker = walker.getNext();
+        }
+
+        return false;
     }
 }

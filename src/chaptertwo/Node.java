@@ -1,4 +1,4 @@
-package ChapterTwo;
+package chaptertwo;
 
 // Node class for chapter two
 

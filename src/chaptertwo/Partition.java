@@ -1,4 +1,4 @@
-package ChapterTwo;
+package chaptertwo;
 
 public class Partition {
     public static void main(String[] args){

@@ -1,4 +1,4 @@
-package ChapterTwo;
+package chaptertwo;
 
 public class KToLast {
     public static void main(String[] args){

@@ -1,7 +1,6 @@
 package chapterthree;
 
-import ChapterTwo.DNode;
-import ChapterTwo.DoublyLinkedList;
+import chaptertwo.DoublyLinkedList;
 
 public class Stack<E> {
     public static void main(String[] args){

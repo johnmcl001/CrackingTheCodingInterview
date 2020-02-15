@@ -1,4 +1,4 @@
-package ChapterTwo;
+package chaptertwo;
 
 public class DNode <E> {
     private E element;

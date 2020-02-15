@@ -1,4 +1,4 @@
-package ChapterTwo;
+package chaptertwo;
 
 /*
 Linked List class for exercises in chapter two

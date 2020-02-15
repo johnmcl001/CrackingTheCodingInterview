@@ -1,8 +1,6 @@
 package chapterthree;
 
-import ChapterTwo.DoublyLinkedList;
-
-import java.sql.SQLOutput;
+import chaptertwo.DoublyLinkedList;
 
 public class Queue <E> {
     public static void main(String[] args){
@@ -82,5 +80,9 @@ public class Queue <E> {
     @Override
     public String toString(){
         return list.toString();
+    }
+
+    public boolean contains(E e){
+        return list.contains(e);
     }
 }

@@ -114,7 +114,7 @@ public class Graph <E> {
         return visited;
     }
 
-    private class Node<E>{
+    private static class Node<E>{
         private E element;
         private List<Node<E>> neighbours = new ArrayList<>();
 
